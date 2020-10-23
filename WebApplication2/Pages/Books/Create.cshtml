@@ -1,0 +1,52 @@
+﻿@page
+@model WebApplication2.Pages.Books.CreateModel
+
+@{
+    ViewData["Title"] = "Создание Книги";
+}
+
+<h1>Создание</h1>
+
+<h4>Книги</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Book.BkName" class="control-label"></label>
+                <input asp-for="Book.BkName" class="form-control" />
+                <span asp-validation-for="Book.BkName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.BkAuthor" class="control-label"></label>
+                <input asp-for="Book.BkAuthor" class="form-control" />
+                <span asp-validation-for="Book.BkAuthor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.BkRealiseDate" class="control-label"></label>
+                <input asp-for="Book.BkRealiseDate" class="form-control" />
+                <span asp-validation-for="Book.BkRealiseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.PublisherID" class="control-label"></label>
+                <select asp-for="Book.PublisherID" class ="form-control" asp-items="ViewBag.PublisherID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.GenreId" class="control-label"></label>
+                <select asp-for="Book.GenreId" class ="form-control" asp-items="ViewBag.GenreId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
