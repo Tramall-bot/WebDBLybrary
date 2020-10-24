@@ -21,12 +21,15 @@ namespace WebApplication2.Pages.Books
 
         public IList<Book> Book { get;set; }
         public IList<Genre> Genre { get; set; }
+        public IList<Publisher> Publisher { get; set; }
         public async Task OnGetAsync()
         {
             Book = await _context.Book
                 .Include(b => b.Gen)
                 .Include(b => b.Pub).ToListAsync();
             Genre = await _context.Genre.ToListAsync();
+            Publisher = await _context.Publisher.ToListAsync();
+
         }
     }
 }

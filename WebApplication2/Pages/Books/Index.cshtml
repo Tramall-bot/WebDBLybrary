@@ -53,8 +53,15 @@
                 @Html.DisplayFor(modelItem => item.Gen.ID)
                 }
             </td>
-            <td>           
+            <td>
+                @try
+                {
+                    @Model.Publisher.First(r => r.ID == item.PublisherID).PubName
+                }
+                catch
+                {
                 @Html.DisplayFor(modelItem => item.Pub.ID)
+                }
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Изменить</a> |

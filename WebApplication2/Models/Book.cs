@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace WebDBLybrary.Models
 {
@@ -22,7 +24,7 @@ namespace WebDBLybrary.Models
         [Display(Name = "Код жанра")]
         public long? GenreId { get; set; }
         [Display(Name = "Возвражение книги")]
-        public DbSet<ReturnedBook> ReturnedBooks { get; set; }
+        public ICollection<ReturnedBook> ReturnedBooks { get; set; }
         [Display(Name = "Жанр книги")]
         public virtual Genre Gen { get; set; }
         [Display(Name = "Издатель книги")]

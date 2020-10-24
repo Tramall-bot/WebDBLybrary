@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApplication2.Data;
 using WebDBLybrary.Models;
 
-namespace WebApplication2.Pages.Employees
+namespace WebApplication2.Pages.ReturnedBooks
 {
     public class CreateModel : PageModel
     {
@@ -18,20 +18,34 @@ namespace WebApplication2.Pages.Employees
         {
             _context = context;
         }
-        public List<SelectListItem> Position { get; set; }
+        public List<SelectListItem> Book { get; set; }
+        public List<SelectListItem> Employee { get; set; }
+        public List<SelectListItem> Reader { get; set; }
         public IActionResult OnGet()
         {
-        ViewData["PosID"] = _context.Position.Select(p =>
+        ViewData["BkId"] = _context.Book.Select(p =>
                  new SelectListItem
                  {
                      Value = p.ID.ToString(),
-                     Text = p.PosName
+                     Text = p.BkName
+                 }).ToList();
+            ViewData["EmpId"] = _context.Employee.Select(p =>
+                 new SelectListItem
+                 {
+                     Value = p.ID.ToString(),
+                     Text = p.EmpFullName
+                 }).ToList();
+            ViewData["RdId"] = _context.Reader.Select(p =>
+                 new SelectListItem
+                 {
+                     Value = p.ID.ToString(),
+                     Text = p.RdFullName
                  }).ToList();
             return Page();
         }
 
         [BindProperty]
-        public Employee Employee { get; set; }
+        public ReturnedBook ReturnedBook { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -42,7 +56,7 @@ namespace WebApplication2.Pages.Employees
                 return Page();
             }
 
-            _context.Employee.Add(Employee);
+            _context.ReturnedBook.Add(ReturnedBook);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

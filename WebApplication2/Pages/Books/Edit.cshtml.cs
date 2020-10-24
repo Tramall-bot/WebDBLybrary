@@ -22,7 +22,8 @@ namespace WebApplication2.Pages.Books
 
         [BindProperty]
         public Book Book { get; set; }
-
+        public List<SelectListItem> Genre { get; set; }
+        public List<SelectListItem> Publisher { get; set; }
         public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
@@ -38,8 +39,18 @@ namespace WebApplication2.Pages.Books
             {
                 return NotFound();
             }
-           ViewData["GenreId"] = new SelectList(_context.Set<Genre>(), "ID", "ID");
-           ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID", "ID");
+           ViewData["GenreId"] = _context.Publisher.Select(p =>
+                 new SelectListItem
+                 {
+                     Value = p.ID.ToString(),
+                     Text = p.PubName
+                 }).ToList();
+            ViewData["PublisherID"] = _context.Genre.Select(p =>
+                 new SelectListItem
+                 {
+                     Value = p.ID.ToString(),
+                     Text = p.GenName
+                 }).ToList();
             return Page();
         }
 

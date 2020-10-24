@@ -2,14 +2,13 @@
 @model WebApplication2.Pages.Readers.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Удаление Читателя";
 }
 
-<h1>Delete</h1>
+<h1>Удаление читателя</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Вы уверены, что хотите это сделать?</h3>
 <div>
-    <h4>Reader</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -52,7 +51,7 @@
     
     <form method="post">
         <input type="hidden" asp-for="Reader.ID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-page="./Index">Вернуться к списку</a>
     </form>
 </div>

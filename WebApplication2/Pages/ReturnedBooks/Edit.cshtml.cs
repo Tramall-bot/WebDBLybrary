@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication2.Data;
 using WebDBLybrary.Models;
 
-namespace WebApplication2.Pages.Employees
+namespace WebApplication2.Pages.ReturnedBooks
 {
     public class EditModel : PageModel
     {
@@ -21,8 +21,10 @@ namespace WebApplication2.Pages.Employees
         }
 
         [BindProperty]
-        public Employee Employee { get; set; }
-        public List<SelectListItem> Position { get; set; }
+        public ReturnedBook ReturnedBook { get; set; }
+        public List<SelectListItem> Book { get; set; }
+        public List<SelectListItem> Employee { get; set; }
+        public List<SelectListItem> Reader { get; set; }
         public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
@@ -30,19 +32,33 @@ namespace WebApplication2.Pages.Employees
                 return NotFound();
             }
 
-            Employee = await _context.Employee
-                .Include(e => e.Pos).FirstOrDefaultAsync(m => m.ID == id);
+            ReturnedBook = await _context.ReturnedBook
+                .Include(r => r.Bk)
+                .Include(r => r.Emp)
+                .Include(r => r.Rd).FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Employee == null)
+            if (ReturnedBook == null)
             {
                 return NotFound();
             }
-           ViewData["PosID"] = _context.Position.Select(p =>
+           ViewData["BkId"] = _context.Book.Select(p =>
+                new SelectListItem
+                {
+                    Value = p.ID.ToString(),
+                    Text = p.BkName
+                }).ToList();
+            ViewData["EmpId"] = _context.Employee.Select(p =>
                  new SelectListItem
                  {
                      Value = p.ID.ToString(),
-                     Text = p.PosName
+                     Text = p.EmpFullName
                  }).ToList();
+            ViewData["RdId"] = _context.Reader.Select(p =>
+                  new SelectListItem
+                  {
+                      Value = p.ID.ToString(),
+                      Text = p.RdFullName
+                  }).ToList();
             return Page();
         }
 
@@ -55,7 +71,7 @@ namespace WebApplication2.Pages.Employees
                 return Page();
             }
 
-            _context.Attach(Employee).State = EntityState.Modified;
+            _context.Attach(ReturnedBook).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +79,7 @@ namespace WebApplication2.Pages.Employees
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployeeExists(Employee.ID))
+                if (!ReturnedBookExists(ReturnedBook.ID))
                 {
                     return NotFound();
                 }
@@ -76,9 +92,9 @@ namespace WebApplication2.Pages.Employees
             return RedirectToPage("./Index");
         }
 
-        private bool EmployeeExists(long id)
+        private bool ReturnedBookExists(long id)
         {
-            return _context.Employee.Any(e => e.ID == id);
+            return _context.ReturnedBook.Any(e => e.ID == id);
         }
     }
 }

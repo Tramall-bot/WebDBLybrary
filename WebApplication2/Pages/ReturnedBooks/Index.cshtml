@@ -1,0 +1,87 @@
+﻿@page
+@model WebApplication2.Pages.ReturnedBooks.IndexModel
+
+@{
+    ViewData["Title"] = "Возвращённые книги";
+}
+
+<h1>Список возвращённыйх книг</h1>
+
+<p>
+    <a asp-page="Create">Создать возвращённую книгу</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnedBook[0].RbReturnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnedBook[0].RbGiveOutDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnedBook[0].RbReturnFlag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnedBook[0].Bk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnedBook[0].Emp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnedBook[0].Rd)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ReturnedBook) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RbReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RbGiveOutDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RbReturnFlag)
+            </td>
+            <td>
+                @try
+                {
+                    @Model.Book.First(r => r.ID == item.BkId).BkName
+                }
+                catch
+                {
+                @Html.DisplayFor(modelItem => item.Bk.ID)
+                }
+            </td>
+            <td>
+                @try
+                {
+                    @Model.Employee.First(r => r.ID == item.EmpId).EmpFullName
+                }
+                catch
+                {
+                @Html.DisplayFor(modelItem => item.Emp.ID)
+                }
+            </td>
+            <td>
+                @try
+                {
+                    @Model.Reader.First(r => r.ID == item.RdId).RdFullName
+                }
+                catch
+                {
+                @Html.DisplayFor(modelItem => item.Rd.ID)
+                }
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Изменить</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Подробности</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

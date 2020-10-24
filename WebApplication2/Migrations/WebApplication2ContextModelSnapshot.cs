@@ -158,8 +158,8 @@ namespace WebApplication2.Migrations
                     b.Property<string>("RdAddress")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RdBdDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("RdBdDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("RdFullName")
                         .HasColumnType("nvarchar(max)");
@@ -191,11 +191,11 @@ namespace WebApplication2.Migrations
                     b.Property<long>("EmpId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("RbGiveOutDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("RbGiveOutDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("RbReturnDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("RbReturnDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("RbReturnFlag")
                         .HasColumnType("bit");

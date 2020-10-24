@@ -1,0 +1,60 @@
+﻿@page
+@model WebApplication2.Pages.ReturnedBooks.EditModel
+
+@{
+    ViewData["Title"] = "Изменение Возвращённой книги";
+}
+
+<h1>Изменить</h1>
+
+<h4>Возвращённую книгу</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReturnedBook.ID" />
+            <div class="form-group">
+                <label asp-for="ReturnedBook.RbReturnDate" class="control-label"></label>
+                <input asp-for="ReturnedBook.RbReturnDate" class="form-control" />
+                <span asp-validation-for="ReturnedBook.RbReturnDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReturnedBook.RbGiveOutDate" class="control-label"></label>
+                <input asp-for="ReturnedBook.RbGiveOutDate" class="form-control" />
+                <span asp-validation-for="ReturnedBook.RbGiveOutDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ReturnedBook.RbReturnFlag" /> @Html.DisplayNameFor(model => model.ReturnedBook.RbReturnFlag)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReturnedBook.BkId" class="control-label"></label>
+                <select asp-for="ReturnedBook.BkId" class="form-control" asp-items="ViewBag.BkId"></select>
+                <span asp-validation-for="ReturnedBook.BkId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReturnedBook.RdId" class="control-label"></label>
+                <select asp-for="ReturnedBook.RdId" class="form-control" asp-items="ViewBag.RdId"></select>
+                <span asp-validation-for="ReturnedBook.RdId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReturnedBook.EmpId" class="control-label"></label>
+                <select asp-for="ReturnedBook.EmpId" class="form-control" asp-items="ViewBag.EmpId"></select>
+                <span asp-validation-for="ReturnedBook.EmpId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить изменения" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

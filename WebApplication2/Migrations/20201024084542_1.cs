@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication2.Migrations
 {
-    public partial class first : Migration
+    public partial class _1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -59,7 +59,7 @@ namespace WebApplication2.Migrations
                     ID = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RdFullName = table.Column<string>(nullable: true),
-                    RdBdDate = table.Column<string>(nullable: true),
+                    RdBdDate = table.Column<DateTime>(nullable: false),
                     RdSex = table.Column<string>(nullable: true),
                     RdAddress = table.Column<string>(nullable: true),
                     RdPhoneNumber = table.Column<string>(nullable: true),
@@ -130,8 +130,8 @@ namespace WebApplication2.Migrations
                 {
                     ID = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RbReturnDate = table.Column<string>(nullable: true),
-                    RbGiveOutDate = table.Column<string>(nullable: true),
+                    RbReturnDate = table.Column<DateTime>(nullable: false),
+                    RbGiveOutDate = table.Column<DateTime>(nullable: false),
                     RbReturnFlag = table.Column<bool>(nullable: false),
                     BkId = table.Column<long>(nullable: false),
                     RdId = table.Column<long>(nullable: false),

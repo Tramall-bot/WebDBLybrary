@@ -19,15 +19,28 @@ namespace WebApplication2.Pages.Books
             _context = context;
         }
 
+        public List<SelectListItem>  Genre { get; set; }
+        public List<SelectListItem> Publisher { get; set; }
         public IActionResult OnGet()
         {
-        ViewData["GenreId"] = new SelectList(_context.Set<Genre>(), "ID", "ID");
-        ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID", "ID");
+        ViewData["GenreId"] = _context.Genre.Select(p =>
+                 new SelectListItem
+                 {
+                     Value = p.ID.ToString(),
+                     Text = p.GenName
+                 }).ToList(); 
+        ViewData["PublisherID"] = _context.Publisher.Select(p =>
+                 new SelectListItem
+                 {
+                     Value = p.ID.ToString(),
+                     Text = p.PubName
+                 }).ToList();
             return Page();
-        }
+         }
 
         [BindProperty]
         public Book Book { get; set; }
+
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.

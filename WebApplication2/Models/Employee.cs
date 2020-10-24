@@ -15,7 +15,7 @@ namespace WebDBLybrary.Models
         public long EmpAge { get; set; }
         [Display(Name = "Пол рабочего")]
         public string EmpSex { get; set; }
-        [Display(Name = "Адресс рабочего")]
+        [Display(Name = "Адрес рабочего")]
         public string EmpAddress { get; set; }
         [Display(Name = "Телефон рабочего")]
         public string EmpPhoneNumber { get; set; }
