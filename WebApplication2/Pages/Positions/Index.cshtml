@@ -1,0 +1,54 @@
+﻿@page
+@model WebApplication2.Pages.Positions.IndexModel
+
+@{
+    ViewData["Title"] = "Позиции";
+}
+
+<h1>Список позиций</h1>
+
+<p>
+    <a asp-page="Create">Создать новую позицию</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Position[0].PosName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position[0].PosSalary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position[0].PosDuties)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position[0].PosRequirements)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Position) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PosName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PosSalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PosDuties)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PosRequirements)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Изменить</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Подробнее</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

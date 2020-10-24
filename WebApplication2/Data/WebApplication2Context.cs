@@ -17,5 +17,15 @@ namespace WebApplication2.Data
         public DbSet<WebDBLybrary.Models.Book> Book { get; set; }
 
         public DbSet<WebDBLybrary.Models.Genre> Genre { get; set; }
+
+        public DbSet<WebDBLybrary.Models.Employee> Employee { get; set; }
+
+        public DbSet<WebDBLybrary.Models.Position> Position { get; set; }
+
+        public DbSet<WebDBLybrary.Models.Publisher> Publisher { get; set; }
+
+        public DbSet<WebDBLybrary.Models.Reader> Reader { get; set; }
+
+        public DbSet<WebDBLybrary.Models.ReturnedBook> ReturnedBook { get; set; }
     }
 }

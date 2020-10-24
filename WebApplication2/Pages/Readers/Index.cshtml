@@ -1,0 +1,66 @@
+﻿@page
+@model WebApplication2.Pages.Readers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reader[0].RdFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reader[0].RdBdDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reader[0].RdSex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reader[0].RdAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reader[0].RdPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reader[0].RdPassportData)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Reader) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RdFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RdBdDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RdSex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RdAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RdPhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RdPassportData)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

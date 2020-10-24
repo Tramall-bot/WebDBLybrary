@@ -2,12 +2,12 @@
 @model WebApplication2.Pages.Books.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Изменение Книги";
 }
 
-<h1>Edit</h1>
+<h1>Узменить</h1>
 
-<h4>Book</h4>
+<h4>Книгу</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -40,14 +40,14 @@
                 <span asp-validation-for="Book.GenreId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Сохранить изменения" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Вернуться к списку</a>
 </div>
 
 @section Scripts {
