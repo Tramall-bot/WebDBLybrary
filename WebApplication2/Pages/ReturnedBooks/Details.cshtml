@@ -32,19 +32,40 @@
             @Html.DisplayNameFor(model => model.ReturnedBook.Bk)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ReturnedBook.Bk.ID)
+            @try
+            {
+                @Html.DisplayFor(model => model.Book.BkName)
+            }
+            catch
+            {
+                @Html.DisplayFor(model => model.ReturnedBook.Bk.ID)
+            }
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ReturnedBook.Emp)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ReturnedBook.Emp.ID)
+            @try
+            {
+                @Html.DisplayFor(model => model.Employee.EmpFullName)
+            }
+            catch
+            {
+                @Html.DisplayFor(model => model.ReturnedBook.Emp.ID)
+            }
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ReturnedBook.Rd)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ReturnedBook.Rd.ID)
+            @try
+            {
+                @Html.DisplayFor(model => model.Reader.RdFullName)
+            }
+            catch
+            {
+                @Html.DisplayFor(model => model.ReturnedBook.Rd.ID)
+            }
         </dd>
     </dl>
 </div>

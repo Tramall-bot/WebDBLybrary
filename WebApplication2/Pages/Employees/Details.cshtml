@@ -50,7 +50,14 @@
             @Html.DisplayNameFor(model => model.Employee.Pos)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.Pos.ID)
+            @try
+            {
+                @Html.DisplayFor(model => model.Position.PosName)
+            }
+            catch
+            {
+                @Html.DisplayFor(model => model.Employee.Pos.ID)
+            }
         </dd>
     </dl>
 </div>

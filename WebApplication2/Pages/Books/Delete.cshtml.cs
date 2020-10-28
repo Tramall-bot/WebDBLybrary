@@ -21,7 +21,8 @@ namespace WebApplication2.Pages.Books
 
         [BindProperty]
         public Book Book { get; set; }
-
+        public Genre Genre { get; set; }
+        public Publisher Publisher { get; set; }
         public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
@@ -32,7 +33,8 @@ namespace WebApplication2.Pages.Books
             Book = await _context.Book
                 .Include(b => b.Gen)
                 .Include(b => b.Pub).FirstOrDefaultAsync(m => m.ID == id);
-
+            Genre = await _context.Genre.FirstOrDefaultAsync(m => m.ID == Book.GenreId);
+            Publisher = await _context.Publisher.FirstOrDefaultAsync(m => m.ID == Book.GenreId);
             if (Book == null)
             {
                 return NotFound();

@@ -19,9 +19,9 @@ namespace WebDBLybrary.Models
         public string BkAuthor { get; set; }
         [Display(Name = "Дата выпуска книги")]
         public DateTime BkRealiseDate { get; set; }
-        [Display(Name = "Код Издателя")]
+        [Display(Name = "Издатель")]
         public long? PublisherID { get; set; }
-        [Display(Name = "Код жанра")]
+        [Display(Name = "Жанр")]
         public long? GenreId { get; set; }
         [Display(Name = "Возвражение книги")]
         public ICollection<ReturnedBook> ReturnedBooks { get; set; }

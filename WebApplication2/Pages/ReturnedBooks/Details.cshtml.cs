@@ -20,7 +20,9 @@ namespace WebApplication2.Pages.ReturnedBooks
         }
 
         public ReturnedBook ReturnedBook { get; set; }
-
+        public Book Book { get; set; }
+        public Reader Reader { get; set; }
+        public Employee Employee { get; set; }
         public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
@@ -32,7 +34,9 @@ namespace WebApplication2.Pages.ReturnedBooks
                 .Include(r => r.Bk)
                 .Include(r => r.Emp)
                 .Include(r => r.Rd).FirstOrDefaultAsync(m => m.ID == id);
-
+            Book = await _context.Book.FirstOrDefaultAsync(m => m.ID == ReturnedBook.BkId);
+            Reader = await _context.Reader.FirstOrDefaultAsync(m => m.ID == ReturnedBook.RdId);
+            Employee = await _context.Employee.FirstOrDefaultAsync(m => m.ID == ReturnedBook.EmpId);
             if (ReturnedBook == null)
             {
                 return NotFound();

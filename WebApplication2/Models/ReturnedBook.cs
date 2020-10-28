@@ -16,11 +16,11 @@ namespace WebDBLybrary.Models
         public DateTime RbGiveOutDate { get; set; }
         [Display(Name = "Отметка о возврате")] 
         public bool RbReturnFlag { get; set; }
-        [Display(Name = "ID книги")] 
+        [Display(Name = "Книга")] 
         public long BkId { get; set; }
-        [Display(Name = "ID читателя")] 
+        [Display(Name = "Читатель")] 
         public long RdId { get; set; }
-        [Display(Name = "ID рабочего")] 
+        [Display(Name = "Рабочий")] 
         public long EmpId { get; set; }
         [Display(Name = "Книга")] 
         public virtual Book Bk { get; set; }

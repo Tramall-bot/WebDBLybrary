@@ -21,7 +21,7 @@ namespace WebApplication2.Pages.Employees
 
         [BindProperty]
         public Employee Employee { get; set; }
-
+        public Position Position { get; set; }
         public async Task<IActionResult> OnGetAsync(long? id)
         {
             if (id == null)
@@ -31,7 +31,7 @@ namespace WebApplication2.Pages.Employees
 
             Employee = await _context.Employee
                 .Include(e => e.Pos).FirstOrDefaultAsync(m => m.ID == id);
-
+            Position = await _context.Position.FirstOrDefaultAsync(m => m.ID == Employee.PosID);
             if (Employee == null)
             {
                 return NotFound();
