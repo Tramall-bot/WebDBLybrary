@@ -19,7 +19,7 @@ namespace WebApplication2.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebDBLybrary.Models.Book", b =>
+            modelBuilder.Entity("WebApplication2.Models.Book", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace WebApplication2.Migrations
                     b.ToTable("Book");
                 });
 
-            modelBuilder.Entity("WebDBLybrary.Models.Employee", b =>
+            modelBuilder.Entity("WebApplication2.Models.Employee", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd()
@@ -85,7 +85,7 @@ namespace WebApplication2.Migrations
                     b.ToTable("Employee");
                 });
 
-            modelBuilder.Entity("WebDBLybrary.Models.Genre", b =>
+            modelBuilder.Entity("WebApplication2.Models.Genre", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd()
@@ -103,7 +103,7 @@ namespace WebApplication2.Migrations
                     b.ToTable("Genre");
                 });
 
-            modelBuilder.Entity("WebDBLybrary.Models.Position", b =>
+            modelBuilder.Entity("WebApplication2.Models.Position", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd()
@@ -127,7 +127,7 @@ namespace WebApplication2.Migrations
                     b.ToTable("Position");
                 });
 
-            modelBuilder.Entity("WebDBLybrary.Models.Publisher", b =>
+            modelBuilder.Entity("WebApplication2.Models.Publisher", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd()
@@ -148,7 +148,7 @@ namespace WebApplication2.Migrations
                     b.ToTable("Publisher");
                 });
 
-            modelBuilder.Entity("WebDBLybrary.Models.Reader", b =>
+            modelBuilder.Entity("WebApplication2.Models.Reader", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd()
@@ -178,7 +178,7 @@ namespace WebApplication2.Migrations
                     b.ToTable("Reader");
                 });
 
-            modelBuilder.Entity("WebDBLybrary.Models.ReturnedBook", b =>
+            modelBuilder.Entity("WebApplication2.Models.ReturnedBook", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd()
@@ -214,39 +214,39 @@ namespace WebApplication2.Migrations
                     b.ToTable("ReturnedBook");
                 });
 
-            modelBuilder.Entity("WebDBLybrary.Models.Book", b =>
+            modelBuilder.Entity("WebApplication2.Models.Book", b =>
                 {
-                    b.HasOne("WebDBLybrary.Models.Genre", "Gen")
+                    b.HasOne("WebApplication2.Models.Genre", "Gen")
                         .WithMany("Books")
                         .HasForeignKey("GenreId");
 
-                    b.HasOne("WebDBLybrary.Models.Publisher", "Pub")
+                    b.HasOne("WebApplication2.Models.Publisher", "Pub")
                         .WithMany("Books")
                         .HasForeignKey("PublisherID");
                 });
 
-            modelBuilder.Entity("WebDBLybrary.Models.Employee", b =>
+            modelBuilder.Entity("WebApplication2.Models.Employee", b =>
                 {
-                    b.HasOne("WebDBLybrary.Models.Position", "Pos")
+                    b.HasOne("WebApplication2.Models.Position", "Pos")
                         .WithMany("Employees")
                         .HasForeignKey("PosID");
                 });
 
-            modelBuilder.Entity("WebDBLybrary.Models.ReturnedBook", b =>
+            modelBuilder.Entity("WebApplication2.Models.ReturnedBook", b =>
                 {
-                    b.HasOne("WebDBLybrary.Models.Book", "Bk")
+                    b.HasOne("WebApplication2.Models.Book", "Bk")
                         .WithMany("ReturnedBooks")
                         .HasForeignKey("BkId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebDBLybrary.Models.Employee", "Emp")
+                    b.HasOne("WebApplication2.Models.Employee", "Emp")
                         .WithMany("ReturnedBooks")
                         .HasForeignKey("EmpId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebDBLybrary.Models.Reader", "Rd")
+                    b.HasOne("WebApplication2.Models.Reader", "Rd")
                         .WithMany("ReturnedBooks")
                         .HasForeignKey("RdId")
                         .OnDelete(DeleteBehavior.Cascade)

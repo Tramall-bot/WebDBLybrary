@@ -1,0 +1,57 @@
+﻿@page
+@model WebApplication2.Pages.FilReq.Req.Books_On_HandsModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnedBook[0].Bk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnedBook[0].Emp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnedBook[0].Rd)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ReturnedBook)
+        {
+            <tr>
+                <td>
+                    @try
+                    {
+                        @Model.Book.First(r => r.ID == item.BkId).BkName
+                    }
+                    catch
+                    {
+                        @Html.DisplayFor(modelItem => item.Bk.ID)
+                    }
+                </td>
+                <td>
+                    @try
+                    {
+                        @Model.Employee.First(r => r.ID == item.EmpId).EmpFullName
+                    }
+                    catch
+                    {
+                        @Html.DisplayFor(modelItem => item.Emp.ID)
+                    }
+                </td>
+                <td>
+                    @try
+                    {
+                        @Model.Reader.First(r => r.ID == item.RdId).RdFullName
+                    }
+                    catch
+                    {
+                        @Html.DisplayFor(modelItem => item.Rd.ID)
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

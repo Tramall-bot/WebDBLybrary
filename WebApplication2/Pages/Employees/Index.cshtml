@@ -10,6 +10,7 @@
 <p>
     <a asp-page="Create">Создать нового рабочего</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -38,42 +39,43 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Employee) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpFullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpAge)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpSex)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpPhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpPassportData)
-            </td>
-            <td>
-                @try
-                {
-                    @Model.Position.First(r => r.ID == item.PosID).PosName
-                }
-                catch 
-                { 
-                @Html.DisplayFor(modelItem => item.Pos.ID)
-                }
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Изменить</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Подробнее</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Employee)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpAge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpSex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpPhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpPassportData)
+                </td>
+                <td>
+                    @try
+                    {
+                        @Model.Position.First(r => r.ID == item.PosID).PosName
+                    }
+                    catch
+                    {
+                        @Html.DisplayFor(modelItem => item.Pos.ID)
+                    }
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Изменить</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Подробнее</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -1,0 +1,36 @@
+﻿@page
+@model WebApplication2.Pages.FilReq.StaffDepModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].EmpFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].Pos)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Employee)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpFullName)
+                </td>
+                <td>
+                    @try
+                    {
+                        @Model.Position.First(r => r.ID == item.PosID).PosName
+                    }
+                    catch
+                    {
+                        @Html.DisplayFor(modelItem => item.Pos.ID)
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

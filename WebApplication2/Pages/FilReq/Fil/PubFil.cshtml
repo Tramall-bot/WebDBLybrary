@@ -1,0 +1,38 @@
+﻿@page
+@model WebApplication2.Pages.FilReq.Fil.PubFilModel
+@{
+}
+<h1>@Model.Publisher.PubName</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].BkName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Gen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Book)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BkName)
+                </td>
+                <td>
+                    @try
+                    {
+                        @Model.Genre.First(r => r.ID == item.GenreId).GenName
+                    }
+                    catch
+                    {
+                        @Html.DisplayFor(modelItem => item.Gen.ID)
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

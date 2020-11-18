@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.Data;
-using WebDBLybrary.Models;
+using WebApplication2.Models;
 
 namespace WebApplication2.Pages.Readers
 {

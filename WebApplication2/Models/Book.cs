@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace WebDBLybrary.Models
+namespace WebApplication2.Models
 {
     public class Book
     {

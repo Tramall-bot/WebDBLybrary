@@ -1,0 +1,123 @@
+﻿@page
+@model WebApplication2.Pages.FilReq.IndexModel
+@{
+}
+<script>
+    function BtnFun(Classname, obj) {
+        var value = obj.value;
+        var name = "." + Classname;
+        if (value[0] != "-") {
+            $(name).prop('disabled', false);
+        }
+        else {
+            $(name).prop('disabled', true);
+        }
+    }
+</script>
+
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Запросы
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <ul>
+                    <li>
+                        <a class="nav-link text-dark" asp-area="" asp-page="/FilReq/Req/StaffDep">Отдел Кадров</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-dark" asp-area="" asp-page="/FilReq/Req/Catalog">Каталог</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-dark" asp-area="" asp-page="/FilReq/Req/Books_On_Hands">Книги на руках</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed text-dark" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Фильтры
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <ul>
+                    <li>
+                        <form>
+                            Отфильтровать сотрудников по должности:
+                            <select class="form-control-sm" asp-items="Model.SelPos" name="id" onclick="BtnFun('FilPos', this)">
+                                <option value="-1">не выбран</option>
+                            </select>
+                            <button asp-page="/FilReq/Fil/StaffFil" class="btn btn-primary FilPos" disabled> Отфильтровать</button>
+                        </form>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <form>
+                            Отфильтровать книги по издателю:
+                            <select class="form-control-sm" asp-items="Model.SelPub" name="id" onclick="BtnFun('FilPub', this)">
+                                <option value="-1">не выбран</option>
+                            </select>
+                            <button asp-page="/FilReq/Fil/PubFil" class="btn btn-primary FilPub" disabled> Отфильтровать</button>
+                        </form>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <form>
+                            Отфильтровать книги по автору:
+                            <select class="form-control-sm" asp-items="Model.SelAuthor" name="id" onclick="BtnFun('FilAuthor', this)">
+                                <option value="-1">не выбран</option>
+                            </select>
+                            <button asp-page="/FilReq/Fil/AuthorFil" class="btn btn-primary FilAuthor" disabled> Отфильтровать</button>
+                        </form>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <form>
+                            Отфильтровать книги по дате выпуска:
+                            <select class="form-control-sm" asp-items="Model.SelDate" name="id" onclick="BtnFun('FilDate', this)">
+                                <option value="-1">не выбран</option>
+                            </select>
+                            <button asp-page="/FilReq/Fil/YearFil" class="btn btn-primary FilDate" disabled> Отфильтровать</button>
+                        </form>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <form>
+                            Отфильтровать книги выдаче:
+                            <select class="form-control-sm" asp-items="Model.SelOnHand" name="id" onclick="BtnFun('FilOnHand', this)">
+                                <option value="-1">не выбран</option>
+                            </select>
+                            <button asp-page="/FilReq/Fil/ReturnFil" class="btn btn-primary FilOnHand" disabled> Отфильтровать</button>
+                        </form>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <form>
+                            Отфильтровать книги по читателю:
+                            <select class="form-control-sm" asp-items="Model.SelRead" name="id" onclick="BtnFun('FilRead', this)">
+                                <option value="-1">не выбран</option>
+                            </select>
+                            <button asp-page="/FilReq/Fil/ReaderFil" class="btn btn-primary FilRead" disabled> Отфильтровать</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

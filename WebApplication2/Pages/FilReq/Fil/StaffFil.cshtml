@@ -1,0 +1,55 @@
+﻿@page
+@model WebApplication2.Pages.FilReq.StaffFilModel
+@{
+}
+<h1>@Model.Position.PosName</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].EmpFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].EmpAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].EmpSex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].EmpAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].EmpPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee[0].EmpPassportData)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Employee)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpAge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpSex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpPhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpPassportData)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

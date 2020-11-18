@@ -1,0 +1,50 @@
+﻿@page
+@model WebApplication2.Pages.FilReq.Req.CatalogModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].BkName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Gen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Pub)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Book)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BkName)
+                </td>
+                <td>
+                    @try
+                    {
+                        @Model.Genre.First(r => r.ID == item.GenreId).GenName
+                    }
+                    catch
+                    {
+                        @Html.DisplayFor(modelItem => item.Gen.ID)
+                    }
+                </td>
+                <td>
+                    @try
+                    {
+                        @Model.Publisher.First(r => r.ID == item.PublisherID).PubName
+                    }
+                    catch
+                    {
+                        @Html.DisplayFor(modelItem => item.Pub.ID)
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
